@@ -6,11 +6,11 @@
 
 body {
 	font-family: "Montserrat", sans-serif;
-	background-image: url(../img/background.jpg);
+	background-color: #aeebdf;
 }
 
 .store-name {
-	font-weight: 600;
+	font-family: "Oleo Script", cursive;
 }
 
 .card_container {
@@ -18,18 +18,37 @@ body {
 	flex-direction: column;
 	width: 80%;
 	margin: auto;
+	margin-top: 100px;
+}
+
+.product-name {
+	text-transform: uppercase;
+}
+
+.review {
+	background-color: #ffd0c6;
+	border-radius: 5px;
+	padding: 1rem;
+	margin: 20px 0;
+}
+
+.tag {
+	font-weight: bold;
 }
 
 .product-card {
-	background-color: lightblue;
+	background-color: #f8f9fa;
+	border: 3px solid #ffd0c6;
 	justify-content: space-around;
 	display: flex;
 	flex-direction: column;
-	margin: 5px 0px;
-	padding: 5px;
+	margin: 10px 0px;
+	padding: 2rem;
 	border-radius: 5px;
 }
 
-.insert-button {
-	margin-top: 5px;
+.product-card:hover {
+	cursor: pointer;
+	transition: 0.3s;
+	transform: scale(1.015);
 }

@@ -3,17 +3,28 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Dolci di Piera</title>
-		<!-- Latest compiled and minified CSS -->
+		<link
+			rel="shortcut icon"
+			href="assets/img/favicon.ico"
+			type="image/x-icon"
+		/>
+		<!-- Bootstrap 4 -->
 		<link
 			rel="stylesheet"
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 			crossorigin="anonymous"
 		/>
+
 		<!-- GFonts -->
 		<link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap"
 			rel="stylesheet"
 		/>
 		<!-- Style -->
@@ -21,38 +32,114 @@
 	</head>
 	<body>
 		<div class="wrapper" id="app">
-			<div class="card_container">
-				<h1 class="store-name">{{ storeName }}</h1>
-				<div class="product-card" v-for="(product, index) in products">
-					<h5>{{ product.data.title }}</h5>
-					<p>Descrizione: {{ product.data.description }}</p>
-					<p>Prezzo: {{ product.data.price }} €</p>
-					<p>Categoria: {{ product.data.category }}</p>
-					<p>Dipendente: {{ product.data.employee }}</p>
-					<p v-if="product.data.reviews" v-for="review in product.data.reviews">
-						Review: {{ review }}
-					</p>
-					<span class="actions">
-						<button
-							type="button"
-							class="btn btn-danger pull-right"
-							data-toggle="modal"
-							@click="deleteData(product.id)"
-						>
-							Elimina
-						</button></span
+			<header>
+				<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="#">
+						<h1 class="store-name text-center">{{ storeName }}</h1>
+					</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
 					>
-				</div>
-				<button
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto"></ul>
+						<form class="form-inline my-2 my-lg-0">
+							<input
+								class="form-control mr-sm-2"
+								type="search"
+								placeholder="Ricerca"
+								aria-label="Search"
+							/>
+							<button
+								class="btn btn-outline-success my-2 my-sm-0"
+								type="submit"
+							>
+								Ricerca
+							</button>
+						</form>
+					</div>
+				</nav>
+			</header>
+			<main>
+				<div class="card_container">
+					<div class="product-card" v-for="(product, index) in products">
+						<h3 class="product-name"><em>{{ product.data.title }}</em></h3>
+						<hr />
+						<p>
+							<span class="tag">Descrizione: </span>{{ product.data.description
+							}}
+						</p>
+						<p><span class="tag">Prezzo: </span>{{ product.data.price }} €</p>
+						<p>
+							<span class="tag">Categoria: </span>{{ product.data.category }}
+						</p>
+						<p>
+							<span class="tag">Dipendente: </span>{{ product.data.employee }}
+						</p>
+						<div class="reviews" v-if="product.data.reviews">
+							<hr />
+							<h4>Recensioni</h4>
+							<div class="review" v-for="review in product.data.reviews">
+								<h5>{{ review.title }}</h5>
+								<p>{{ review.user }}</p>
+								<p>{{ review.description }}</p>
+							</div>
+						</div>
+
+						<span class="actions">
+							<button
+								type="button"
+								class="btn btn-sm btn-danger mt-3"
+								data-toggle="modal"
+								@click="deleteData(product.id)"
+							>
+								Elimina
+							</button>
+						</span>
+					</div>
+					<hr />
+					<!-- 				<button
 					type="button"
-					class="btn btn-success pull-right insert-button"
+					class="btn btn-success insert-button"
 					data-toggle="modal"
 				>
 					Inserisci un nuovo prodotto
-				</button>
-			</div>
+				</button> -->
+				</div>
+			</main>
+			<footer>
+				<p style="text-align: center">
+					Copyright &copy;
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					{{ storeName }}
+				</p>
+			</footer>
 		</div>
-
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"
+		></script>
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"
 			integrity="sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ=="

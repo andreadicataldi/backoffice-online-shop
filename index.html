@@ -15,7 +15,6 @@
 			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 			crossorigin="anonymous"
 		/>
-
 		<!-- GFonts -->
 		<link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link
@@ -33,6 +32,7 @@
 	<body>
 		<div class="wrapper" id="app">
 			<header>
+				<!-- NAVBAR -->
 				<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 					<a class="navbar-brand" href="#">
 						<h1 class="store-name text-center">{{ storeName }}</h1>
@@ -67,9 +67,12 @@
 						</form>
 					</div>
 				</nav>
+				<!-- /NAVBAR -->
 			</header>
 			<main>
+				<!-- CARD CONTAINER -->
 				<div class="card_container">
+					<!-- PRODUCT CARD -->
 					<div class="product-card" v-for="(product, index) in products">
 						<h3 class="product-name"><em>{{ product.data.title }}</em></h3>
 						<hr />
@@ -93,7 +96,6 @@
 								<p>{{ review.description }}</p>
 							</div>
 						</div>
-
 						<span class="actions">
 							<button
 								type="button"
@@ -105,16 +107,12 @@
 							</button>
 						</span>
 					</div>
+					<!-- /PRODUCT CARD -->
 					<hr />
-					<!-- 				<button
-					type="button"
-					class="btn btn-success insert-button"
-					data-toggle="modal"
-				>
-					Inserisci un nuovo prodotto
-				</button> -->
 				</div>
+				<!-- /CARD CONTAINER -->
 			</main>
+			<!-- FOOTER -->
 			<footer>
 				<p style="text-align: center">
 					Copyright &copy;
@@ -124,7 +122,9 @@
 					{{ storeName }}
 				</p>
 			</footer>
+			<!-- /FOOTER -->
 		</div>
+		<!-- JS SCRIPTS -->
 		<script
 			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -147,5 +147,6 @@
 		></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 		<script src="assets/js/main.js" charset="utf-8"></script>
+		<!-- /JS SCRIPTS -->
 	</body>
 </html>
